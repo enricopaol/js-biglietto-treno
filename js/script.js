@@ -8,30 +8,29 @@
 
 // Chiedere il numero di chilometri da percorrere ed età passeggero
 var chilometri = prompt('Quanti chilometri devi percorrere?');
-console.log(chilometri);
-
-var numeroChilometri = parseInt( chilometri );
-console.log(numeroChilometri);
-
 var eta = prompt('Quanti anni hai?');
-console.log(eta);
 
+//Trasformare stringhe in numeri
+var numeroChilometri = parseInt( chilometri );
 var numeroEta = parseInt( eta );
-console.log(numeroEta);
 
+// Definire tariffa:
+var tariffaBiglietto = 0.21;
 
-// Definire prezzi:
-
-// - 0.21€/km prezzo normale
-var prezzoBiglietto;
-
-prezzoBiglietto = 0.21 * numeroChilometri;
-console.log('prezzo del biglietto: ', prezzoBiglietto);
+//prezzo standard:
+var prezzoStandard = tariffaBiglietto * numeroChilometri;
 
 // - sconto 20% per i minorenni
-var prezzoMinorenni
-
+var prezzoMinorenni = prezzoStandard - ( prezzoStandard * 0.2 );
 
 // - sconto 40% per gli over 65
+var prezzoOver = prezzoStandard - ( prezzoStandard * 0.4);
 
-// output con massimo 2 decimali 
+// Logica degli sconti
+if (numeroEta < 18 ) {
+    alert('Il prezzo del biglietto è: ' + prezzoMinorenni.toFixed(2) + '€');
+} else if ( numeroEta > 65 ) {
+    alert('Il prezzo del biglietto è: ' + prezzoOver.toFixed(2) + '€');
+} else {
+    alert('Il prezzo del biglietto è: ' + prezzoStandard.toFixed(2) + '€');
+}
